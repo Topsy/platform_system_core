@@ -14,6 +14,7 @@ loglevel 3
     export ANDROID_DATA /data
     export EXTERNAL_STORAGE /sdcard
     export BOOTCLASSPATH /system/framework/core.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar
+    export TERMINFO /system/etc/terminfo
 
 # Backward compatibility
     symlink /system/etc /etc
@@ -358,3 +359,11 @@ service dumpstate /system/bin/dumpstate -s
     socket dumpstate stream 0660 shell log
     disabled
     oneshot
+
+# Clean shutdown
+service reboot /system/bin/shutdown -r
+    disabled
+    oneshot
+
+service poweroff /system/bin/shutdown
+    disabled
